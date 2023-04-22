@@ -80,7 +80,7 @@ def init():
         load_player_info(config.PLAYER.get)
 
     # setup colorama
-    if has_colorama and mswin:
+    if has_colorama and mswin and not os.getenv('NO_COLOR'):
         # Colorama converts ansi escape codes to Windows system calls
         colorama.init()
 

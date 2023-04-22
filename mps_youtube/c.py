@@ -7,9 +7,9 @@ import sys
 
 if sys.stdout.isatty():
     white = "\x1b[%sm" % 0
-    ul = "\x1b[%sm" * 3 % (2, 4, 33)
+    ul = "\x1b[%sm" * 3 % (2, 4, 33) if not os.getenv('NO_COLOR') else "\x1b[%sm" * 2 % (2, 4)
     cols = ["\x1b[%sm" % n for n in range(91, 96)]
-    red, green, yellow, blue, pink = cols
+    red, green, yellow, blue, pink = cols if not os.getenv('NO_COLOR') else ["","","","",""]
 else:
     ul = red = green = yellow = blue = pink = white = ""
 
